@@ -7,6 +7,8 @@ defmodule BYWeb.Router do
 
   scope "/api", BYWeb do
     pipe_through :api
+
+    resources "/todos", TodoController, except: [:delete]
   end
 
   # Enables LiveDashboard only for development
