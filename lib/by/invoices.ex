@@ -9,35 +9,6 @@ defmodule BY.Invoices do
   alias BY.Invoices.LNPayInvoice
 
   @doc """
-  Returns the list of lnpay_invoices.
-
-  ## Examples
-
-      iex> list_lnpay_invoices()
-      [%LNPayInvoice{}, ...]
-
-  """
-  def list_lnpay_invoices do
-    Repo.all(LNPayInvoice)
-  end
-
-  @doc """
-  Gets a single ln_pay_invoice.
-
-  Raises `Ecto.NoResultsError` if the Ln pay invoice does not exist.
-
-  ## Examples
-
-      iex> get_ln_pay_invoice!(123)
-      %LNPayInvoice{}
-
-      iex> get_ln_pay_invoice!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_ln_pay_invoice!(id), do: Repo.get!(LNPayInvoice, id)
-
-  @doc """
   Creates a ln_pay_invoice.
 
   ## Examples
@@ -71,22 +42,6 @@ defmodule BY.Invoices do
     ln_pay_invoice
     |> LNPayInvoice.changeset(attrs)
     |> Repo.update()
-  end
-
-  @doc """
-  Deletes a ln_pay_invoice.
-
-  ## Examples
-
-      iex> delete_ln_pay_invoice(ln_pay_invoice)
-      {:ok, %LNPayInvoice{}}
-
-      iex> delete_ln_pay_invoice(ln_pay_invoice)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_ln_pay_invoice(%LNPayInvoice{} = ln_pay_invoice) do
-    Repo.delete(ln_pay_invoice)
   end
 
   @doc """
