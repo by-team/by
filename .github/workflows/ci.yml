@@ -1,0 +1,61 @@
+name: CI
+
+on: push
+
+jobs:
+ ci:
+   runs-on: ubuntu-latest
+   strategy:
+     matrix:
+       otp: ['23.1']
+       elixir: ['1.11.2']
+   services:
+     postgres:
+       image: postgres:13.1
+       env:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: postgres
+         POSTGRES_DB: by_test
+       ports:
+       - 5432:5432
+       options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+   env:
+     MIX_ENV: test
+     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-elixir@v1
+       with:
+         otp-version: ${{matrix.otp}}
+         elixir-version: ${{matrix.elixir}}
+     - uses: actions/cache@v2
+       with:
+         path: deps
+         key: ${{ runner.os }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+         restore-keys: |
+           ${{ runner.os }}-mix-
+
+     - run: mix local.rebar --force
+     - run: mix local.hex --force
+     - run: mix deps.get
+
+     - run: mix format --check-formatted
+
+     - run: mix credo --strict
+
+     - run: mix test
+
+     - uses: actions/cache@v2
+       id: plt-cache
+       with:
+         path: priv/plts
+         key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+
+     - name: Create PLTs
+       if: steps.plt-cache.outputs.cache-hit != 'true'
+       run: |
+         mkdir -p priv/plts
+         mix dialyzer --plt
+
+     - run: mix dialyzer --no-check --halt-exit-status
+

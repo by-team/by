@@ -26,3 +26,6 @@ by-*.tar
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
 /priv/static/
+
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
