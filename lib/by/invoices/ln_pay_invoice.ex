@@ -29,7 +29,43 @@ defmodule BY.Invoices.LNPayInvoice do
   @doc false
   def changeset(ln_pay_invoice, attrs) do
     ln_pay_invoice
-    |> cast(attrs, [:created_at_in_lnpay, :ln_node_id, :dest_pubkey, :payment_request, :r_hash_decoded, :memo, :descripton_bash, :num_satoshis, :fee_msat, :expiry, :expires_at, :payment_preimage, :settled_at, :is_keysend, :custom_records, :ticket_id, :wallet_id])
-    |> validate_required([:created_at_in_lnpay, :ln_node_id, :dest_pubkey, :payment_request, :r_hash_decoded, :memo, :descripton_bash, :num_satoshis, :fee_msat, :expiry, :expires_at, :payment_preimage, :settled_at, :is_keysend, :custom_records, :ticket_id, :wallet_id])
+    |> cast(attrs, [
+      :created_at_in_lnpay,
+      :ln_node_id,
+      :dest_pubkey,
+      :payment_request,
+      :r_hash_decoded,
+      :memo,
+      :descripton_bash,
+      :num_satoshis,
+      :fee_msat,
+      :expiry,
+      :expires_at,
+      :payment_preimage,
+      :settled_at,
+      :is_keysend,
+      :custom_records,
+      :ticket_id,
+      :wallet_id
+    ])
+    |> validate_required([
+      :created_at_in_lnpay,
+      :ln_node_id,
+      :dest_pubkey,
+      :payment_request,
+      :r_hash_decoded,
+      :memo,
+      :descripton_bash,
+      :num_satoshis,
+      :fee_msat,
+      :expiry,
+      :expires_at,
+      :payment_preimage,
+      :settled_at,
+      :is_keysend,
+      :custom_records,
+      :ticket_id,
+      :wallet_id
+    ])
   end
 end

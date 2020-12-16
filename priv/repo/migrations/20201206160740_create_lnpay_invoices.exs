@@ -24,6 +24,5 @@ defmodule BY.Repo.Migrations.CreateLnpayInvoices do
 
       timestamps()
     end
-
   end
 end

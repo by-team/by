@@ -34,7 +34,9 @@ defmodule BY.Lnpay.Client do
   defp handle_get_invoice({:ok, %Tesla.Env{status: 404, body: body}}), do: {:error, body}
 
   def get_withdraw_link(num_satoshis, memo) do
-    get("wallet/#{@wallet_admin_id}/lnurl/withdraw", query: [num_satoshis: num_satoshis, memo: memo])
+    get("wallet/#{@wallet_admin_id}/lnurl/withdraw",
+      query: [num_satoshis: num_satoshis, memo: memo]
+    )
     |> handle_get_invoice()
   end
 
