@@ -1,4 +1,4 @@
-defmodule BY.Repo.Migrations.CreateLnpayInvoices do
+defmodule BY.Repo.Migrations.CreateLNPayInvoices do
   use Ecto.Migration
 
   def change do

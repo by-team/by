@@ -1,4 +1,4 @@
-defmodule BY.Lnpay.Client do
+defmodule BY.LNPay.Client do
   use Tesla
 
   plug Tesla.Middleware.BaseUrl, "https://lnpay.co/v1/"
