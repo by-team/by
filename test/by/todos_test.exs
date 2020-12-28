@@ -6,9 +6,33 @@ defmodule BY.TodosTest do
   describe "todos" do
     alias BY.Todos.Todo
 
-    @valid_attrs %{done_at: ~N[2010-04-17 14:00:00], invoice_link: "some invoice_link", invoice_paid_at: ~N[2010-04-17 14:00:00], not_done_at: ~N[2010-04-17 14:00:00], title: "some title", withdraw_link: "some withdraw_link", withdrawn_at: ~N[2010-04-17 14:00:00]}
-    @update_attrs %{done_at: ~N[2011-05-18 15:01:01], invoice_link: "some updated invoice_link", invoice_paid_at: ~N[2011-05-18 15:01:01], not_done_at: ~N[2011-05-18 15:01:01], title: "some updated title", withdraw_link: "some updated withdraw_link", withdrawn_at: ~N[2011-05-18 15:01:01]}
-    @invalid_attrs %{done_at: nil, invoice_link: nil, invoice_paid_at: nil, not_done_at: nil, title: nil, withdraw_link: nil, withdrawn_at: nil}
+    @valid_attrs %{
+      done_at: ~N[2010-04-17 14:00:00],
+      invoice_link: "some invoice_link",
+      invoice_paid_at: ~N[2010-04-17 14:00:00],
+      not_done_at: ~N[2010-04-17 14:00:00],
+      title: "some title",
+      withdraw_link: "some withdraw_link",
+      withdrawn_at: ~N[2010-04-17 14:00:00]
+    }
+    @update_attrs %{
+      done_at: ~N[2011-05-18 15:01:01],
+      invoice_link: "some updated invoice_link",
+      invoice_paid_at: ~N[2011-05-18 15:01:01],
+      not_done_at: ~N[2011-05-18 15:01:01],
+      title: "some updated title",
+      withdraw_link: "some updated withdraw_link",
+      withdrawn_at: ~N[2011-05-18 15:01:01]
+    }
+    @invalid_attrs %{
+      done_at: nil,
+      invoice_link: nil,
+      invoice_paid_at: nil,
+      not_done_at: nil,
+      title: nil,
+      withdraw_link: nil,
+      withdrawn_at: nil
+    }
 
     def todo_fixture(attrs \\ %{}) do
       {:ok, todo} =

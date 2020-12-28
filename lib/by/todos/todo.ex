@@ -1,4 +1,8 @@
 defmodule BY.Todos.Todo do
+  @moduledoc """
+  this module is responsable to create the to-dos
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

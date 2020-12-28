@@ -14,6 +14,5 @@ defmodule BY.Repo.Migrations.CreateTodos do
 
       timestamps()
     end
-
   end
 end

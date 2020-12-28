@@ -11,13 +11,15 @@ defmodule BYWeb.TodoView do
   end
 
   def render("todo.json", %{todo: todo}) do
-    %{id: todo.id,
+    %{
+      id: todo.id,
       title: todo.title,
       invoice_link: todo.invoice_link,
       invoice_paid_at: todo.invoice_paid_at,
       done_at: todo.done_at,
       not_done_at: todo.not_done_at,
       withdraw_link: todo.withdraw_link,
-      withdrawn_at: todo.withdrawn_at}
+      withdrawn_at: todo.withdrawn_at
+    }
   end
 end
