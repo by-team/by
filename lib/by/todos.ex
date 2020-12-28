@@ -85,4 +85,6 @@ defmodule BY.Todos do
   def change_todo(%Todo{} = todo, attrs \\ %{}) do
     Todo.changeset(todo, attrs)
   end
+
+  def delete_todo(%Todo{} = todo), do: Repo.delete(todo)
 end
