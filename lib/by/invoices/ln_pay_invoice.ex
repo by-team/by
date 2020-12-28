@@ -1,4 +1,6 @@
 defmodule BY.Invoices.LNPayInvoice do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,7 +11,7 @@ defmodule BY.Invoices.LNPayInvoice do
     field :custom_records, :map
     field :descripton_bash, :string
     field :dest_pubkey, :string
-    field :expires_at, :integer
+    field :expires_at, :naive_datetime
     field :expiry, :integer
     field :fee_msat, :integer
     field :is_keysend, :boolean, default: false
@@ -19,6 +21,7 @@ defmodule BY.Invoices.LNPayInvoice do
     field :payment_preimage, :string
     field :payment_request, :string
     field :r_hash_decoded, :string
+    field :settled, :integer
     field :settled_at, :naive_datetime
     field :ticket_id, :string
     field :wallet_id, :string
@@ -43,6 +46,7 @@ defmodule BY.Invoices.LNPayInvoice do
       :expires_at,
       :payment_preimage,
       :settled_at,
+      :settled,
       :is_keysend,
       :custom_records,
       :ticket_id,
@@ -54,17 +58,10 @@ defmodule BY.Invoices.LNPayInvoice do
       :dest_pubkey,
       :payment_request,
       :r_hash_decoded,
-      :memo,
-      :descripton_bash,
       :num_satoshis,
       :fee_msat,
       :expiry,
       :expires_at,
-      :payment_preimage,
-      :settled_at,
-      :is_keysend,
-      :custom_records,
-      :ticket_id,
       :wallet_id
     ])
   end

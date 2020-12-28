@@ -3,27 +3,46 @@ defmodule BY.Invoices do
   The Invoices context.
   """
 
+  import Ecto.Changeset
   import Ecto.Query, warn: false
-  alias BY.Repo
 
   alias BY.Invoices.LNPayInvoice
+  alias BY.Repo
 
   @doc """
   Creates a ln_pay_invoice.
 
   ## Examples
 
-      iex> create_ln_pay_invoice(%{field: value})
+      iex> create_ln_pay_invoice(num_satoshis, memo)
       {:ok, %LNPayInvoice{}}
 
-      iex> create_ln_pay_invoice(%{field: bad_value})
+      iex> create_ln_pay_invoice(bad_value, bad_value)
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_ln_pay_invoice(attrs \\ %{}) do
-    %LNPayInvoice{}
-    |> LNPayInvoice.changeset(attrs)
-    |> Repo.insert()
+  def create_ln_pay_invoice(num_satoshis, memo \\ nil) do
+    data = %{}
+    types = %{num_satoshis: :integer, memo: :string}
+
+    changeset =
+      {data, types}
+      |> Ecto.Changeset.cast(%{num_satoshis: num_satoshis, memo: memo}, Map.keys(types))
+      |> validate_required([:num_satoshis])
+
+    if changeset.valid? do
+      case BY.LNPay.generate_invoice(num_satoshis, memo) do
+        {:ok, invoice} ->
+          %LNPayInvoice{}
+          |> LNPayInvoice.changeset(invoice)
+          |> Repo.insert()
+
+        error ->
+          error
+      end
+    else
+      {:error, changeset}
+    end
   end
 
   @doc """

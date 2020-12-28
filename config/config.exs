@@ -28,6 +28,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :by, BY.LNPay, token: "pak_O0iUMxk8kK_qUzkT4YKFvp1ZsUtp"
+config :by, BY.LNPay, wallet_invoice_id: "waki_Q2XHBIfEAN33mLlwdYvusN6Q"
+config :by, BY.LNPay, wallet_admin_id: "wa_Opnn4kGOGBMnfCLFXtsDnjTb"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
