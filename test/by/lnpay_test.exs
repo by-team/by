@@ -101,7 +101,7 @@ defmodule BY.LNPayTest do
 
   describe "generate_withdraw/2" do
     test "lpnay error" do
-      assert LNPay.generate_withdraw(1, nil) == {:error, :lnpay_error}
+      assert LNPay.generate_withdraw(1, nil) == {:error, :service_provider_error}
     end
 
     test "returns a withdraw" do

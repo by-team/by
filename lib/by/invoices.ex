@@ -10,18 +10,18 @@ defmodule BY.Invoices do
   alias BY.Repo
 
   @doc """
-  Creates a ln_pay_invoice.
+  Creates a lnpay_invoice.
 
   ## Examples
 
-      iex> create_ln_pay_invoice(num_satoshis, memo)
+      iex> create_lnpay_invoice(num_satoshis, memo)
       {:ok, %LNPayInvoice{}}
 
-      iex> create_ln_pay_invoice(bad_value, bad_value)
+      iex> create_lnpay_invoice(bad_value, bad_value)
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_ln_pay_invoice(num_satoshis, memo \\ nil) do
+  def create_lnpay_invoice(num_satoshis, memo \\ nil) do
     data = %{}
     types = %{num_satoshis: :integer, memo: :string}
 
@@ -46,33 +46,33 @@ defmodule BY.Invoices do
   end
 
   @doc """
-  Updates a ln_pay_invoice.
+  Updates a lnpay_invoice.
 
   ## Examples
 
-      iex> update_ln_pay_invoice(ln_pay_invoice, %{field: new_value})
+      iex> update_lnpay_invoice(lnpay_invoice, %{field: new_value})
       {:ok, %LNPayInvoice{}}
 
-      iex> update_ln_pay_invoice(ln_pay_invoice, %{field: bad_value})
+      iex> update_lnpay_invoice(lnpay_invoice, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_ln_pay_invoice(%LNPayInvoice{} = ln_pay_invoice, attrs) do
-    ln_pay_invoice
+  def update_lnpay_invoice(%LNPayInvoice{} = lnpay_invoice, attrs) do
+    lnpay_invoice
     |> LNPayInvoice.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking ln_pay_invoice changes.
+  Returns an `%Ecto.Changeset{}` for tracking lnpay_invoice changes.
 
   ## Examples
 
-      iex> change_ln_pay_invoice(ln_pay_invoice)
+      iex> change_lnpay_invoice(lnpay_invoice)
       %Ecto.Changeset{data: %LNPayInvoice{}}
 
   """
-  def change_ln_pay_invoice(%LNPayInvoice{} = ln_pay_invoice, attrs \\ %{}) do
-    LNPayInvoice.changeset(ln_pay_invoice, attrs)
+  def change_lnpay_invoice(%LNPayInvoice{} = lnpay_invoice, attrs \\ %{}) do
+    LNPayInvoice.changeset(lnpay_invoice, attrs)
   end
 end

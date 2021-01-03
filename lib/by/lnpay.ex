@@ -100,6 +100,6 @@ defmodule BY.LNPay do
 
   defp handle_response({:ok, %Tesla.Env{status: status}}, _expected_status)
        when status in [500, 501, 502, 503, 505, 506, 507, 508, 510, 511] do
-    {:error, :lnpay_error}
+    {:error, :service_provider_error}
   end
 end

@@ -30,8 +30,8 @@ defmodule BY.Invoices.LNPayInvoice do
   end
 
   @doc false
-  def changeset(ln_pay_invoice, attrs) do
-    ln_pay_invoice
+  def changeset(lnpay_invoice, attrs) do
+    lnpay_invoice
     |> cast(attrs, [
       :created_at_in_lnpay,
       :ln_node_id,
